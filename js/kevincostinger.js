@@ -39,13 +39,17 @@
  *     the scope of his variables and of course, makes use of
  *     event delegation, to keep his event listeners tidied up!
  *
- *     You - 2026-03-25
+ *     Eric Keplinger - 2026-04-10
  *******************************************************/
 let sumExpenses = 0; //Use this variable to keep the sum up to date.
 
 function submitForm(e){
     //TODO: Prevent the default behavior of the submit button.
+    let button = getElementsByTagName("button");
+    button.preventDefault();
+
     //TODO: Validate the form. If everything is fine, add the expense to the tracker and reset the form.
+
 }
 
 
@@ -60,13 +64,13 @@ function submitForm(e){
  *     @param {any} variable - Variable which you want to check.
  *     @return {Boolean} Empty or not.
  ******************************************************/
-let isEmpty = function(variable) {
-    if(Array.isArray(variable))
-        return (variable.length === 0);
-    else if(typeof variable === "object")
-        return (Object.entries(variable).length === 0);
+let isEmpty = function(variable) {              // Function that checks if a variable is "empty"
+    if(Array.isArray(variable))                         // Check if the variable is an array
+        return (variable.length === 0);                 // Return true if array has no elements
+    else if(typeof variable === "object")               // Check if the variable is an object (includes plain objects, but also null edge case)
+        return (Object.entries(variable).length === 0); // Convert object to [key, value] pairs and check if there are none
     else
-        return (typeof variable === "undefined" || variable == null || variable === "");
+        return (typeof variable === "undefined" || variable == null || variable === ""); // For all other types (string, undefined, null, etc.)
 };
 
 /*******************************************************
